@@ -13,7 +13,9 @@ import ru.doubletapp.voipdemo.VoipDemoApplication;
 @Component(modules = {
         AndroidSupportInjectionModule.class,
         ApplicationModule.class,
-        ViewModelModule.class
+        ViewModelModule.class,
+        InteractorModule.class,
+        RepositoryModule.class
 })
 public interface ApplicationComponent {
 

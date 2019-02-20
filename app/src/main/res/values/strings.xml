@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Voip Demo</string>
+    <string name="calling">Calling</string>
+    <string name="callingto">Calling to %s</string>
 </resources>
