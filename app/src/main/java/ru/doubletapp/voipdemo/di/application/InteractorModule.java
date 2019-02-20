@@ -5,8 +5,8 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import ru.doubletapp.voipdemo.call.domain.CallInteractor;
-import ru.doubletapp.voipdemo.user_list.data.repository.local.UsersLocalRepository;
-import ru.doubletapp.voipdemo.user_list.domain.UserListInteractor;
+import ru.doubletapp.voipdemo.userlist.data.repository.local.UsersLocalRepository;
+import ru.doubletapp.voipdemo.userlist.domain.UserListInteractor;
 
 @Module
 class InteractorModule {

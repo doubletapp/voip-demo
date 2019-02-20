@@ -1,4 +1,4 @@
-package ru.doubletapp.voipdemo.user_list.presentation;
+package ru.doubletapp.voipdemo.userlist.presentation;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
@@ -13,8 +13,8 @@ import javax.inject.Inject;
 import ru.doubletapp.voipdemo.R;
 import ru.doubletapp.voipdemo.base.BaseViewModel;
 import ru.doubletapp.voipdemo.call.presentation.CallFragment;
-import ru.doubletapp.voipdemo.user_list.data.model.UserModel;
-import ru.doubletapp.voipdemo.user_list.domain.UserListInteractor;
+import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
+import ru.doubletapp.voipdemo.userlist.domain.UserListInteractor;
 
 public class UserListViewModel extends BaseViewModel {
 

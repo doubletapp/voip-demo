@@ -1,10 +1,9 @@
 package ru.doubletapp.voipdemo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import ru.doubletapp.voipdemo.base.BaseActivity;
-import ru.doubletapp.voipdemo.user_list.presentation.UserListFragment;
+import ru.doubletapp.voipdemo.userlist.presentation.UserListFragment;
 
 public class MainActivity extends BaseActivity {
 

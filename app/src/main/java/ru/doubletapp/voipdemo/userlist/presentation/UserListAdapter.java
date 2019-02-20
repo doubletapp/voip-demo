@@ -1,4 +1,4 @@
-package ru.doubletapp.voipdemo.user_list.presentation;
+package ru.doubletapp.voipdemo.userlist.presentation;
 
 
 import android.content.Context;
@@ -20,7 +20,7 @@ import butterknife.BindDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.doubletapp.voipdemo.R;
-import ru.doubletapp.voipdemo.user_list.data.model.UserModel;
+import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserViewHolder> {
 

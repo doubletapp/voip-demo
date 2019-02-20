@@ -1,4 +1,4 @@
-package ru.doubletapp.voipdemo.user_list.presentation;
+package ru.doubletapp.voipdemo.userlist.presentation;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

@@ -4,13 +4,10 @@ import android.support.annotation.NonNull;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.inject.Inject;
-
 import io.reactivex.Observable;
 
 public class CallInteractor {
 
-    @Inject
     public CallInteractor() {}
 
     public Observable<String> makeCall(@NonNull String contact) {

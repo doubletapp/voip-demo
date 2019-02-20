@@ -8,17 +8,22 @@ import javax.inject.Inject;
 
 import ru.doubletapp.voipdemo.base.BaseViewModel;
 import ru.doubletapp.voipdemo.call.domain.CallInteractor;
-import ru.doubletapp.voipdemo.user_list.data.model.UserModel;
+import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
 
 public class CallViewModel extends BaseViewModel {
 
     @NonNull
-    private CallInteractor mCallInteractor;
+    private final CallInteractor mCallInteractor;
 
-    private MutableLiveData<String> mMutableSpeaker = new MutableLiveData<>();
-    private MutableLiveData<String> mMutableError = new MutableLiveData<>();
+    @NonNull
+    private final MutableLiveData<String> mMutableSpeaker = new MutableLiveData<>();
+    @NonNull
+    private final MutableLiveData<String> mMutableError = new MutableLiveData<>();
 
+    @NonNull
     LiveData<String> speaker() { return mMutableSpeaker; }
+
+    @NonNull
     LiveData<String> error() { return  mMutableError; }
 
     @Inject
@@ -27,7 +32,7 @@ public class CallViewModel extends BaseViewModel {
     }
 
     public void call(@NonNull UserModel userModel) {
-        disposables.add(mCallInteractor.makeCall(userModel.getName()).subscribe(
+        mDisposables.add(mCallInteractor.makeCall(userModel.getName()).subscribe(
                 s -> mMutableSpeaker.postValue(s + " speak"),
                 e -> mMutableError.postValue(e.getLocalizedMessage()),
                 () -> mMutableSpeaker.postValue(null)));

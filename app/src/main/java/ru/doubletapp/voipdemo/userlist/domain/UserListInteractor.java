@@ -1,4 +1,4 @@
-package ru.doubletapp.voipdemo.user_list.domain;
+package ru.doubletapp.voipdemo.userlist.domain;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,8 +13,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import ru.doubletapp.voipdemo.user_list.data.model.UserModel;
-import ru.doubletapp.voipdemo.user_list.data.repository.local.UsersLocalRepository;
+import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
+import ru.doubletapp.voipdemo.userlist.data.repository.local.UsersLocalRepository;
 
 public class UserListInteractor {
 

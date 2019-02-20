@@ -1,4 +1,4 @@
-package ru.doubletapp.voipdemo.user_list.data.model;
+package ru.doubletapp.voipdemo.userlist.data.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,11 +6,11 @@ import android.os.Parcelable;
 public class UserModel implements Parcelable {
 
     private String mName;
-    private boolean isOnline;
+    private boolean mIsOnline;
 
     private UserModel(Parcel in) {
         mName = in.readString();
-        isOnline = in.readByte() != 0;
+        mIsOnline = in.readByte() != 0;
     }
 
     public UserModel() {}
@@ -24,11 +24,11 @@ public class UserModel implements Parcelable {
     }
 
     public boolean isOnline() {
-        return isOnline;
+        return mIsOnline;
     }
 
     public void setOnline(boolean online) {
-        isOnline = online;
+        mIsOnline = online;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class UserModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mName);
-        dest.writeByte((byte) (isOnline ? 1 : 0));
+        dest.writeByte((byte) (mIsOnline ? 1 : 0));
     }
 
     public static final Creator<UserModel> CREATOR = new Creator<UserModel>() {

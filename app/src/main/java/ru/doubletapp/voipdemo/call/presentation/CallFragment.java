@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import ru.doubletapp.voipdemo.R;
 import ru.doubletapp.voipdemo.base.BaseFragment;
 import ru.doubletapp.voipdemo.di.Injectable;
-import ru.doubletapp.voipdemo.user_list.data.model.UserModel;
+import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
 
 public class CallFragment extends BaseFragment implements Injectable {
 

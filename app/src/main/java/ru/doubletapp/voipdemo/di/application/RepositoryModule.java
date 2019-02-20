@@ -6,8 +6,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import ru.doubletapp.voipdemo.user_list.data.repository.local.UsersDao;
-import ru.doubletapp.voipdemo.user_list.data.repository.local.UsersLocalRepository;
+import ru.doubletapp.voipdemo.userlist.data.repository.local.UsersDao;
+import ru.doubletapp.voipdemo.userlist.data.repository.local.UsersLocalRepository;
 
 @Module
 class RepositoryModule {

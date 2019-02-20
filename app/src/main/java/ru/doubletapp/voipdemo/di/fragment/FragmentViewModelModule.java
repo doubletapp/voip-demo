@@ -1,6 +1,5 @@
 package ru.doubletapp.voipdemo.di.fragment;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 
 import dagger.Module;
@@ -8,8 +7,8 @@ import dagger.Provides;
 import ru.doubletapp.voipdemo.call.presentation.CallFragment;
 import ru.doubletapp.voipdemo.call.presentation.CallViewModel;
 import ru.doubletapp.voipdemo.di.application.ViewModelFactory;
-import ru.doubletapp.voipdemo.user_list.presentation.UserListFragment;
-import ru.doubletapp.voipdemo.user_list.presentation.UserListViewModel;
+import ru.doubletapp.voipdemo.userlist.presentation.UserListFragment;
+import ru.doubletapp.voipdemo.userlist.presentation.UserListViewModel;
 
 @Module
 public class FragmentViewModelModule {

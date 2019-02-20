@@ -1,4 +1,4 @@
-package ru.doubletapp.voipdemo.user_list.data.repository.local;
+package ru.doubletapp.voipdemo.userlist.data.repository.local;
 
 import android.support.annotation.NonNull;
 
@@ -10,11 +10,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.inject.Inject;
 
-import ru.doubletapp.voipdemo.user_list.data.model.UserModel;
+import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
 
 public class UsersDao {
 
-    private Set<Integer> generated = new HashSet<>();
+    @NonNull
+    private final Set<Integer> mGenerated = new HashSet<>();
 
     @Inject
     UsersDao() {}
@@ -31,14 +32,14 @@ public class UsersDao {
     @NonNull
     private UserModel generator() {
         UserModel model = new UserModel();
-        if (generated.size() == names.length) {
-            generated.clear();
+        if (mGenerated.size() == names.length) {
+            mGenerated.clear();
         }
         int randomNum = ThreadLocalRandom.current().nextInt(0, names.length);
-        while (generated.contains(randomNum)) {
+        while (mGenerated.contains(randomNum)) {
             randomNum = ThreadLocalRandom.current().nextInt(0, names.length);
         }
-        generated.add(randomNum);
+        mGenerated.add(randomNum);
         model.setOnline(randomNum % 2 == 0);
         model.setName(names[randomNum]);
         return model;

@@ -6,7 +6,7 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
 import ru.doubletapp.voipdemo.call.presentation.CallViewModel;
-import ru.doubletapp.voipdemo.user_list.presentation.UserListViewModel;
+import ru.doubletapp.voipdemo.userlist.presentation.UserListViewModel;
 
 @Module
 abstract class ViewModelModule {

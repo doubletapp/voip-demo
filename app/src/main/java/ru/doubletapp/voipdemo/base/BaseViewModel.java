@@ -6,11 +6,11 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public class BaseViewModel extends ViewModel {
 
-    protected CompositeDisposable disposables = new CompositeDisposable();
+    protected CompositeDisposable mDisposables = new CompositeDisposable();
 
     @Override
     protected void onCleared() {
-        disposables.clear();
+        mDisposables.clear();
         super.onCleared();
     }
 }
