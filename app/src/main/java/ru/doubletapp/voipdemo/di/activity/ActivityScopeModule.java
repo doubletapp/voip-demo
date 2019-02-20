@@ -8,7 +8,7 @@ import ru.doubletapp.voipdemo.di.fragment.VoipScopeModule;
 @Module
 public abstract class ActivityScopeModule {
 
-    @ContributesAndroidInjector(modules = {ActivityViewModelModule.class, VoipScopeModule.class})
+    @ContributesAndroidInjector(modules = {VoipScopeModule.class})
     abstract MainActivity scopeMainActivity();
 
 }

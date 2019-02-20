@@ -1,6 +1,7 @@
 package ru.doubletapp.voipdemo.user_list.domain;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.google.common.collect.Collections2;
 
@@ -17,6 +18,9 @@ import ru.doubletapp.voipdemo.user_list.data.repository.local.UsersLocalReposito
 
 public class UserListInteractor {
 
+    @Nullable
+    private List<UserModel> mUsers;
+
     @NonNull
     private UsersLocalRepository mLocalRepository;
 
@@ -27,7 +31,10 @@ public class UserListInteractor {
 
     @NonNull
     public List<UserModel> getUsers() {
-        List<UserModel> users = mLocalRepository.getUsers();
+        if (mUsers == null) {
+            mUsers = mLocalRepository.getUsers();
+        }
+        List<UserModel> users = mUsers;
         Collections.sort(users, (o1, o2) -> {
             if (o1.isOnline() == o2.isOnline()) {
                 return o1.getName().compareTo(o2.getName());
