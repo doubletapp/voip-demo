@@ -3,14 +3,15 @@ package ru.doubletapp.voipdemo.call.domain;
 import android.support.annotation.NonNull;
 import javax.annotation.Nonnull;
 import io.reactivex.Observable;
+import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
 
 public class CallInteractor {
 
     @Nonnull
-    VoipGateway mVoipGateway;
+    private VoipGateway mVoipGateway;
 
     @Nonnull
-    MicrophoneGateway mMicrophoneGateway;
+    private MicrophoneGateway mMicrophoneGateway;
 
     public CallInteractor(@Nonnull VoipGateway voipGateway,
                           @Nonnull MicrophoneGateway microphoneGateway) {
@@ -18,8 +19,11 @@ public class CallInteractor {
         mMicrophoneGateway = microphoneGateway;
     }
 
-    public Observable<String> makeCall(@NonNull String contact) {
-
+    /**
+     * Initiates call with user
+     * @param model user to call
+     */
+    public Observable<String> makeCall(@NonNull UserModel model) {
         return mVoipGateway.startSession().doOnEach(s -> {
             if (s.getValue() == VoipGateway.VoipStatus.Listening) {
                 mMicrophoneGateway.mute();
@@ -33,7 +37,7 @@ public class CallInteractor {
               case Speaking:
                   return "You speak";
               case Listening:
-                  return contact + " speaks";
+                  return model.getName() + " speaks";
                   default:
                       return "Disconnected";
           }

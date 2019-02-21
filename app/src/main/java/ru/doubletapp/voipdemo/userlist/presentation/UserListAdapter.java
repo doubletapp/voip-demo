@@ -22,6 +22,9 @@ import butterknife.ButterKnife;
 import ru.doubletapp.voipdemo.R;
 import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
 
+/**
+ * Adapter for users list items
+ */
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserViewHolder> {
 
     @NonNull
@@ -46,7 +49,11 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
         return mUsers.size();
     }
 
-    public void setUsers(@NonNull List<UserModel> users) {
+    /**
+     * Updates adapter with new users
+     * @param users new list of users
+     */
+    void setUsers(@NonNull List<UserModel> users) {
         mUsers = users;
         notifyDataSetChanged();
     }
@@ -69,7 +76,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
         Drawable mOfflineStatus;
 
 
-        public UserViewHolder(@NonNull View itemView) {
+        UserViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
@@ -80,6 +87,11 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
             mStatusView.setBackground(model.isOnline() ? mOnlineStatus : mOfflineStatus);
         }
 
+        /**
+         * Get user initials for avatar
+         * @param name user name
+         * @return String with initials, e.g. "AR" for "Aaron Ramsey"
+         */
         private String getInitials(String name) {
             Pattern p = Pattern.compile("((^| )[A-Za-z])");
             Matcher m = p.matcher(name);

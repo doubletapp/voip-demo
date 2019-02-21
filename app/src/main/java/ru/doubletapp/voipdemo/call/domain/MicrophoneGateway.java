@@ -16,6 +16,9 @@ public class MicrophoneGateway {
 
     private WeakReference<Context> mContextReference;
 
+    /**
+     * Mute microphone
+     */
     void mute() {
         AudioManager audioManager =
                 (AudioManager) mContextReference.get().getSystemService(Context.AUDIO_SERVICE);
@@ -25,12 +28,15 @@ public class MicrophoneGateway {
         }
     }
 
+    /**
+     * Cancel microphone mute
+     */
     void unmute() {
         AudioManager audioManager =
                 (AudioManager) mContextReference.get().getSystemService(Context.AUDIO_SERVICE);
         int mode = audioManager.getMode();
         if (mode == AudioManager.MODE_IN_CALL || mode == AudioManager.MODE_IN_COMMUNICATION) {
-            audioManager.setMicrophoneMute(true);
+            audioManager.setMicrophoneMute(false);
         }
     }
 }

@@ -18,6 +18,9 @@ import ru.doubletapp.voipdemo.userlist.data.repository.local.UsersLocalRepositor
 
 public class UserListInteractor {
 
+    /**
+     * Local copy of user's list for caching
+     */
     @Nullable
     private List<UserModel> mUsers;
 
@@ -29,6 +32,10 @@ public class UserListInteractor {
         mLocalRepository = localRepository;
     }
 
+    /**
+     * Get all users
+     * @return A list of users sorted by name
+     */
     @NonNull
     public List<UserModel> getUsers() {
         if (mUsers == null) {
@@ -45,6 +52,10 @@ public class UserListInteractor {
         return users;
     }
 
+    /**
+     * Get online users
+     * @return A list of online users sorted by name
+     */
     @NonNull
     public List<UserModel> getOnlineUsers() {
         List<UserModel> allUsers = getUsers();

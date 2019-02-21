@@ -20,9 +20,15 @@ public class CallViewModel extends BaseViewModel {
     @NonNull
     private final MutableLiveData<String> mMutableError = new MutableLiveData<>();
 
+    /**
+     * Get LiveData for determining current speaker
+     */
     @NonNull
     LiveData<String> speaker() { return mMutableSpeaker; }
 
+    /**
+     * Get LiveData for error handling
+     */
     @NonNull
     LiveData<String> error() { return  mMutableError; }
 
@@ -31,8 +37,12 @@ public class CallViewModel extends BaseViewModel {
         mCallInteractor = callInteractor;
     }
 
+    /**
+     * Call to user
+     * @param userModel model for calling
+     */
     public void call(@NonNull UserModel userModel) {
-        mDisposables.add(mCallInteractor.makeCall(userModel.getName()).subscribe(
+        mDisposables.add(mCallInteractor.makeCall(userModel).subscribe(
                 mMutableSpeaker::postValue,
                 e -> mMutableError.postValue(e.getLocalizedMessage()),
                 () -> mMutableSpeaker.postValue(null)));

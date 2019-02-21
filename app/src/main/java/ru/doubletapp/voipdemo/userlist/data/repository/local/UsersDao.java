@@ -20,6 +20,10 @@ public class UsersDao {
     @Inject
     UsersDao() {}
 
+    /**
+     * Get list of users
+     * @return A list of random generated users
+     */
     @NonNull
     List<UserModel> getUsers() {
         ArrayList<UserModel> users = new ArrayList<>();
@@ -29,6 +33,10 @@ public class UsersDao {
         return users;
     }
 
+    /**
+     * UserModel generator
+     * @return new random UserModel
+     */
     @NonNull
     private UserModel generator() {
         UserModel model = new UserModel();
