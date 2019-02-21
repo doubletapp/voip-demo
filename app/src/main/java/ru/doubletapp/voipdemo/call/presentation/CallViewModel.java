@@ -33,7 +33,7 @@ public class CallViewModel extends BaseViewModel {
 
     public void call(@NonNull UserModel userModel) {
         mDisposables.add(mCallInteractor.makeCall(userModel.getName()).subscribe(
-                s -> mMutableSpeaker.postValue(s + " speak"),
+                mMutableSpeaker::postValue,
                 e -> mMutableError.postValue(e.getLocalizedMessage()),
                 () -> mMutableSpeaker.postValue(null)));
     }

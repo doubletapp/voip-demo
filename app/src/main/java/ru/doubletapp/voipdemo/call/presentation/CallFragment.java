@@ -1,8 +1,11 @@
 package ru.doubletapp.voipdemo.call.presentation;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,7 @@ public class CallFragment extends BaseFragment implements Injectable {
 
     public static final String TAG = "CallFragment";
 
+    private static final int REQUEST_CODE_MICROPHONE = 0x111C;
     private static final String ARGS_USER = "ARGS_USER";
 
     @BindView(R.id.call_status)
@@ -68,6 +72,37 @@ public class CallFragment extends BaseFragment implements Injectable {
             }
         });
 
+        if (isMicrophoneAccessGranted()) {
+            makeCall();
+        } else {
+            requestMicrophonePermission();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_CODE_MICROPHONE) {
+            if (isMicrophoneAccessGranted()) {
+                makeCall();
+            } else {
+                Toast.makeText(requireContext(),
+                        getString(R.string.ask_microphone),
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private boolean isMicrophoneAccessGranted() {
+        return ContextCompat.checkSelfPermission(requireContext(),
+                Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestMicrophonePermission() {
+        requestPermissions(new String[] {Manifest.permission.RECORD_AUDIO}, REQUEST_CODE_MICROPHONE);
+    }
+
+    private void makeCall() {
         if (getArguments() != null) {
             UserModel user = getArguments().getParcelable(ARGS_USER);
             if (user != null) {

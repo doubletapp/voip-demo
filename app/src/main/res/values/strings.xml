@@ -2,4 +2,5 @@
     <string name="app_name">Voip Demo</string>
     <string name="calling">Calling</string>
     <string name="callingto">Calling to %s</string>
+    <string name="ask_microphone">Please give access to microphone for calling</string>
 </resources>

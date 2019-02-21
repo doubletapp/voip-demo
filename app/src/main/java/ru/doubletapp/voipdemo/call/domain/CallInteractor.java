@@ -1,19 +1,42 @@
 package ru.doubletapp.voipdemo.call.domain;
 
 import android.support.annotation.NonNull;
-
-import java.util.concurrent.TimeUnit;
-
+import javax.annotation.Nonnull;
 import io.reactivex.Observable;
 
 public class CallInteractor {
 
-    public CallInteractor() {}
+    @Nonnull
+    VoipGateway mVoipGateway;
+
+    @Nonnull
+    MicrophoneGateway mMicrophoneGateway;
+
+    public CallInteractor(@Nonnull VoipGateway voipGateway,
+                          @Nonnull MicrophoneGateway microphoneGateway) {
+        mVoipGateway = voipGateway;
+        mMicrophoneGateway = microphoneGateway;
+    }
 
     public Observable<String> makeCall(@NonNull String contact) {
-        return Observable
-                .interval(3, TimeUnit.SECONDS)
-                .map(value -> value % 2 == 0 ? contact : "You")
-                .take(6);
+
+        return mVoipGateway.startSession().doOnEach(s -> {
+            if (s.getValue() == VoipGateway.VoipStatus.Listening) {
+                mMicrophoneGateway.mute();
+            } else if (s.getValue() == VoipGateway.VoipStatus.Speaking) {
+                mMicrophoneGateway.unmute();
+            }
+        }).map(voipStatus -> {
+          switch (voipStatus) {
+              case Connecting:
+                  return "Connecting";
+              case Speaking:
+                  return "You speak";
+              case Listening:
+                  return contact + " speaks";
+                  default:
+                      return "Disconnected";
+          }
+        });
     }
 }
