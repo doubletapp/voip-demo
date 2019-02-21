@@ -1,6 +1,8 @@
 package ru.doubletapp.voipdemo.call.domain;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.opentok.android.OpentokError;
@@ -14,13 +16,8 @@ import java.lang.ref.WeakReference;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
-
-
 
 public class VoipGateway implements Session.SessionListener, PublisherKit.PublisherListener {
 
@@ -50,7 +47,7 @@ public class VoipGateway implements Session.SessionListener, PublisherKit.Publis
     @Nullable
     private Subscriber mSubscriber;
 
-    @Nonnull
+    @NonNull
     private WeakReference<Context> mWeakContext;
 
     @Nullable
@@ -62,7 +59,7 @@ public class VoipGateway implements Session.SessionListener, PublisherKit.Publis
     private boolean mMicrophoneMuted = false;
     private int mDurationCounter = 0;
 
-    public VoipGateway(@Nonnull Context context) {
+    public VoipGateway(@NonNull Context context) {
         mWeakContext = new WeakReference<>(context);
     }
 
@@ -78,8 +75,6 @@ public class VoipGateway implements Session.SessionListener, PublisherKit.Publis
         }
         return mStatusObservable;
     }
-
-
 
     // region SessionListener
 

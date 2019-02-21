@@ -5,13 +5,10 @@ import android.support.annotation.Nullable;
 
 import com.google.common.collect.Collections2;
 
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
 import ru.doubletapp.voipdemo.userlist.data.repository.local.UsersLocalRepository;
@@ -27,13 +24,13 @@ public class UserListInteractor {
     @NonNull
     private UsersLocalRepository mLocalRepository;
 
-    @Inject
     public UserListInteractor(@NonNull UsersLocalRepository localRepository) {
         mLocalRepository = localRepository;
     }
 
     /**
      * Get all users
+     *
      * @return A list of users sorted by name
      */
     @NonNull
@@ -54,6 +51,7 @@ public class UserListInteractor {
 
     /**
      * Get online users
+     *
      * @return A list of online users sorted by name
      */
     @NonNull

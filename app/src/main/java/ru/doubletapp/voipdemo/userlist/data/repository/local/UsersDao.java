@@ -18,10 +18,12 @@ public class UsersDao {
     private final Set<Integer> mGenerated = new HashSet<>();
 
     @Inject
-    UsersDao() {}
+    UsersDao() {
+    }
 
     /**
      * Get list of users
+     *
      * @return A list of random generated users
      */
     @NonNull
@@ -35,6 +37,7 @@ public class UsersDao {
 
     /**
      * UserModel generator
+     *
      * @return new random UserModel
      */
     @NonNull

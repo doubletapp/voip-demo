@@ -21,8 +21,10 @@ public class UserListViewModel extends BaseViewModel {
     @NonNull
     private UserListInteractor mUserListInteractor;
 
-    private MutableLiveData<List<UserModel>> mMutableUsers = new MutableLiveData<>();
-    private MutableLiveData<String> mMutableErrors = new MutableLiveData<>();
+    @NonNull
+    private final MutableLiveData<List<UserModel>> mMutableUsers = new MutableLiveData<>();
+    @NonNull
+    private final MutableLiveData<String> mMutableErrors = new MutableLiveData<>();
 
     /**
      * Get LiveData of users list

@@ -9,7 +9,7 @@ import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
 public class UsersLocalRepository {
 
     @NonNull
-    private UsersDao mUsersDao;
+    private final UsersDao mUsersDao;
 
     public UsersLocalRepository(@NonNull UsersDao dao) {
         mUsersDao = dao;

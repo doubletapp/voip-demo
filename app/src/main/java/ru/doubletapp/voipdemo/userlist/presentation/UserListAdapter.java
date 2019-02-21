@@ -51,6 +51,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
 
     /**
      * Updates adapter with new users
+     *
      * @param users new list of users
      */
     void setUsers(@NonNull List<UserModel> users) {
@@ -89,6 +90,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
 
         /**
          * Get user initials for avatar
+         *
          * @param name user name
          * @return String with initials, e.g. "AR" for "Aaron Ramsey"
          */

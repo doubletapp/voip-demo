@@ -18,7 +18,6 @@ public abstract class BaseFragment extends Fragment implements HasSupportFragmen
     @Inject
     protected DispatchingAndroidInjector<Fragment> mDispatchingAndroidInjector;
 
-
     @Override
     public AndroidInjector<Fragment> supportFragmentInjector() {
         return mDispatchingAndroidInjector;
