@@ -3,10 +3,8 @@ package ru.doubletapp.voipdemo.userlist.data.repository.local;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -15,7 +13,7 @@ import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
 public class UsersDao {
 
     @NonNull
-    private final Set<Integer> mGenerated = new HashSet<>();
+    private final Random mRandom = new Random();
 
     @Inject
     UsersDao() {
@@ -30,7 +28,7 @@ public class UsersDao {
     List<UserModel> getUsers() {
         ArrayList<UserModel> users = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            users.add(generator());
+            users.add(generator(i));
         }
         return users;
     }
@@ -38,21 +36,13 @@ public class UsersDao {
     /**
      * UserModel generator
      *
-     * @return new random UserModel
+     * @return new UserModel
      */
     @NonNull
-    private UserModel generator() {
+    private UserModel generator(int index) {
         UserModel model = new UserModel();
-        if (mGenerated.size() == names.length) {
-            mGenerated.clear();
-        }
-        int randomNum = ThreadLocalRandom.current().nextInt(0, names.length);
-        while (mGenerated.contains(randomNum)) {
-            randomNum = ThreadLocalRandom.current().nextInt(0, names.length);
-        }
-        mGenerated.add(randomNum);
-        model.setOnline(randomNum % 2 == 0);
-        model.setName(names[randomNum]);
+        model.setOnline(mRandom.nextDouble() > .5);
+        model.setName(names[index]);
         return model;
     }
 

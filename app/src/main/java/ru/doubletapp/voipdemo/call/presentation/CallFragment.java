@@ -34,11 +34,10 @@ public class CallFragment extends BaseFragment implements Injectable {
     @Inject
     CallViewModel viewModel;
 
-    public static CallFragment newInstance(UserModel model) {
-
+    @NonNull
+    public static CallFragment newInstance(@NonNull UserModel model) {
         Bundle args = new Bundle();
         args.putParcelable(ARGS_USER, model);
-
         CallFragment fragment = new CallFragment();
         fragment.setArguments(args);
         return fragment;

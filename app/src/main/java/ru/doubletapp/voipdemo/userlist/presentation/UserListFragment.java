@@ -33,8 +33,9 @@ public class UserListFragment extends BaseFragment implements Injectable {
     UserListViewModel viewModel;
 
     @NonNull
-    private UserListAdapter mAdapter = new UserListAdapter();
+    private final UserListAdapter mAdapter = new UserListAdapter();
 
+    @NonNull
     public static UserListFragment newInstance() {
         return new UserListFragment();
     }

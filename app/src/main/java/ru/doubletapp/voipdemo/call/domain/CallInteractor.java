@@ -1,20 +1,20 @@
 package ru.doubletapp.voipdemo.call.domain;
 
 import android.support.annotation.NonNull;
-import javax.annotation.Nonnull;
+
 import io.reactivex.Observable;
 import ru.doubletapp.voipdemo.userlist.data.model.UserModel;
 
 public class CallInteractor {
 
-    @Nonnull
-    private VoipGateway mVoipGateway;
+    @NonNull
+    private final VoipGateway mVoipGateway;
 
-    @Nonnull
-    private MicrophoneGateway mMicrophoneGateway;
+    @NonNull
+    private final MicrophoneGateway mMicrophoneGateway;
 
-    public CallInteractor(@Nonnull VoipGateway voipGateway,
-                          @Nonnull MicrophoneGateway microphoneGateway) {
+    public CallInteractor(@NonNull VoipGateway voipGateway,
+                          @NonNull MicrophoneGateway microphoneGateway) {
         mVoipGateway = voipGateway;
         mMicrophoneGateway = microphoneGateway;
     }
